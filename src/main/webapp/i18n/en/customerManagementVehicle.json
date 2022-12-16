@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "customerManagementVehicle": {
+      "home": {
+        "title": "Vehicles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle",
+        "createOrEditLabel": "Create or edit a Vehicle",
+        "notFound": "No Vehicles found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle"
+      },
+      "id": "ID",
+      "vehicleId": "Vehicle Id",
+      "vehicleRegNo": "Vehicle Reg No",
+      "owner": "Owner"
+    }
+  },
+  "customerManagementApp": {
+    "customerManagementVehicle": {
+      "created": "A new Vehicle is created with identifier {{ param }}",
+      "updated": "A Vehicle is updated with identifier {{ param }}",
+      "deleted": "A Vehicle is deleted with identifier {{ param }}"
+    }
+  }
+}
