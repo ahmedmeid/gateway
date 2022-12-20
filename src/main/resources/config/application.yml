@@ -56,7 +56,7 @@ management:
           ]
   endpoint:
     health:
-      show-details: when_authorized
+      show-details: WHEN_AUTHORIZED
       roles: 'ROLE_ADMIN'
       probes:
         enabled: true
@@ -133,21 +133,7 @@ spring:
       httpclient:
         pool:
           max-connections: 1000
-    stream:
-      kafka:
-        binder:
-          replicationFactor: 1
-          auto-create-topics: true
-          brokers: localhost:9092
-      bindings:
-        binding-in-sse:
-          destination: sse-topic
-          content-type: text/plain
-          group: gateway
-        binding-out-sse:
-          destination: sse-topic
-          content-type: text/plain
-          group: gateway
+
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -186,7 +172,7 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/realms/jhipster
+            issuer-uri: ${OAUTH2_ISSUER_URI}
         registration:
           oidc:
             client-id: web_app
