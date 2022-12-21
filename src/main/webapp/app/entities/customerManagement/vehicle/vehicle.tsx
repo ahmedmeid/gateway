@@ -58,6 +58,9 @@ export const Vehicle = () => {
                   <Translate contentKey="gatewayApp.customerManagementVehicle.vehicleRegNo">Vehicle Reg No</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="gatewayApp.customerManagementVehicle.deviceId">Device Id</Translate>
+                </th>
+                <th>
                   <Translate contentKey="gatewayApp.customerManagementVehicle.owner">Owner</Translate>
                 </th>
                 <th />
@@ -73,6 +76,7 @@ export const Vehicle = () => {
                   </td>
                   <td>{vehicle.vehicleId}</td>
                   <td>{vehicle.vehicleRegNo}</td>
+                  <td>{vehicle.deviceId}</td>
                   <td>{vehicle.owner ? <Link to={`/customer/${vehicle.owner.id}`}>{vehicle.owner.name}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">

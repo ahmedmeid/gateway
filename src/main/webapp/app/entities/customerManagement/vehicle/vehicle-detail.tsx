@@ -45,6 +45,12 @@ export const VehicleDetail = () => {
           </dt>
           <dd>{vehicleEntity.vehicleRegNo}</dd>
           <dt>
+            <span id="deviceId">
+              <Translate contentKey="gatewayApp.customerManagementVehicle.deviceId">Device Id</Translate>
+            </span>
+          </dt>
+          <dd>{vehicleEntity.deviceId}</dd>
+          <dt>
             <Translate contentKey="gatewayApp.customerManagementVehicle.owner">Owner</Translate>
           </dt>
           <dd>{vehicleEntity.owner ? vehicleEntity.owner.name : ''}</dd>

@@ -15,7 +15,7 @@ describe('Vehicle e2e test', () => {
   const vehiclePageUrlPattern = new RegExp('/vehicle(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const vehicleSample = { vehicleId: 'Functionality Handcrafted Principal', vehicleRegNo: 'SMTP Qatari back' };
+  const vehicleSample = { vehicleId: 'SMTP Qatari back', vehicleRegNo: 'microchip', deviceId: 'leverage' };
 
   let vehicle;
   let customer;
@@ -196,6 +196,10 @@ describe('Vehicle e2e test', () => {
       cy.get(`[data-cy="vehicleId"]`).type('Computer AI back-end').should('have.value', 'Computer AI back-end');
 
       cy.get(`[data-cy="vehicleRegNo"]`).type('sensor').should('have.value', 'sensor');
+
+      cy.get(`[data-cy="deviceId"]`)
+        .type('Functionality Handcrafted Principal')
+        .should('have.value', 'Functionality Handcrafted Principal');
 
       cy.get(`[data-cy="owner"]`).select(1);
 

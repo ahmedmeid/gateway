@@ -17,6 +17,7 @@
       "id": "ID",
       "vehicleId": "Vehicle Id",
       "vehicleRegNo": "Vehicle Reg No",
+      "deviceId": "Device Id",
       "owner": "Owner"
     }
   },

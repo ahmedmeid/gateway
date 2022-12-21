@@ -4,6 +4,7 @@ export interface IVehicle {
   id?: number;
   vehicleId?: string;
   vehicleRegNo?: string;
+  deviceId?: string;
   owner?: ICustomer;
 }
 

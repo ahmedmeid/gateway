@@ -115,6 +115,16 @@ export const VehicleUpdate = () => {
                 }}
               />
               <ValidatedField
+                label={translate('gatewayApp.customerManagementVehicle.deviceId')}
+                id="vehicle-deviceId"
+                name="deviceId"
+                data-cy="deviceId"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
+              />
+              <ValidatedField
                 id="vehicle-owner"
                 name="owner"
                 data-cy="owner"
