@@ -3,12 +3,10 @@ version: '3.8'
 services:
   consul:
     image: consul:1.13.1
-    # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
     ports:
-      - 127.0.0.1:8300:8300
-      - 127.0.0.1:8500:8500
-      - 127.0.0.1:8600:8600
+      - 8300:8300
+      - 8500:8500
+      - 8600:8600
     command: consul agent -dev -ui -client 0.0.0.0 -log-level=INFO
 
   consul-config-loader:
