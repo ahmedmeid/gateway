@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-import { getEntity } from './vehicle.reducer';
+import { getEntity, subscribeToVehicleData } from './vehicle.reducer';
 
 export const VehicleDetail = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +19,9 @@ export const VehicleDetail = () => {
   }, []);
 
   const vehicleEntity = useAppSelector(state => state.gateway.vehicle.entity);
+
+  const getLiveUpdates = deviceId => dispatch(subscribeToVehicleData(vehicleEntity.deviceId));
+
   return (
     <Row>
       <Col md="8">
@@ -66,6 +69,12 @@ export const VehicleDetail = () => {
           <FontAwesomeIcon icon="pencil-alt" />{' '}
           <span className="d-none d-md-inline">
             <Translate contentKey="entity.action.edit">Edit</Translate>
+          </span>
+        </Button>
+        <Button onClick={getLiveUpdates} color="info">
+          <FontAwesomeIcon icon="arrows-rotate" />{' '}
+          <span className="d-none d-md-inline">
+            <Translate contentKey="entity.action.edit">getLiveUpdates!</Translate>
           </span>
         </Button>
       </Col>

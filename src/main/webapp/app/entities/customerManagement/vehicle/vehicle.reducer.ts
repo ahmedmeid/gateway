@@ -4,6 +4,7 @@ import { createAsyncThunk, isFulfilled, isPending, isRejected } from '@reduxjs/t
 import { cleanEntity } from 'app/shared/util/entity-utils';
 import { IQueryParams, createEntitySlice, EntityState, serializeAxiosError } from 'app/shared/reducers/reducer.utils';
 import { IVehicle, defaultValue } from 'app/shared/model/customerManagement/vehicle.model';
+import { ISubscription } from '../../../shared/model/customerManagement/subscription.model';
 
 const initialState: EntityState<IVehicle> = {
   loading: false,
@@ -15,6 +16,8 @@ const initialState: EntityState<IVehicle> = {
 };
 
 const apiUrl = 'services/customermanagement/api/vehicles';
+
+const vehicleDataApiUrl = 'services/vehicledata/api';
 
 // Actions
 
@@ -28,6 +31,15 @@ export const getEntity = createAsyncThunk(
   async (id: string | number) => {
     const requestUrl = `${apiUrl}/${id}`;
     return axios.get<IVehicle>(requestUrl);
+  },
+  { serializeError: serializeAxiosError }
+);
+
+export const subscribeToVehicleData = createAsyncThunk(
+  'vehicle/subscribe_vehicle_data',
+  async (deviceId: string) => {
+    const requestUrl = `${vehicleDataApiUrl}/subscribe?deviceId=${deviceId}`;
+    return axios.post<ISubscription>(requestUrl);
   },
   { serializeError: serializeAxiosError }
 );
@@ -88,6 +100,14 @@ export const VehicleSlice = createEntitySlice({
         state.updating = false;
         state.updateSuccess = true;
         state.entity = {};
+      })
+      .addCase(subscribeToVehicleData.fulfilled, (state, action) => {
+        state.updating = false;
+        state.updateSuccess = true;
+        state.entity = {
+          ...state.entity,
+          subscriptionId: action.payload.data.subscriptionId,
+        };
       })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
         const { data } = action.payload;

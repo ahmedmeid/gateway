@@ -6,6 +6,7 @@ export interface IVehicle {
   vehicleRegNo?: string;
   deviceId?: string;
   owner?: ICustomer;
+  subscriptionId?: string;
 }
 
 export const defaultValue: Readonly<IVehicle> = {};
